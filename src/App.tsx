@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FigmaClient } from 'figma-js'
+import { Client } from 'figma-js'
 
 export default function App() {
   const [fileKey, setFileKey] = useState('')
@@ -18,9 +18,9 @@ export default function App() {
     setError(null)
 
     try {
-      const client = FigmaClient({ personalAccessToken: accessToken })
-      const file = await client.file(fileKey)
-      setFileData(file)
+      const client = Client({ personalAccessToken: accessToken })
+      const response = await client.file(fileKey)
+      setFileData(response.data)
     } catch (err: any) {
       setError(err.message || 'Failed to fetch Figma file')
       setFileData(null)
