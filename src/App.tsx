@@ -1,3 +1,5 @@
+import { FigmaClient } from 'figma-js'
+
 export default function App() {
   return (
     <div>
